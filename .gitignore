@@ -1,0 +1,7 @@
+# Tools
+/.direnv/
+/venv/
+compile_commands.json
+/.envrc
+
+.DS_Store
