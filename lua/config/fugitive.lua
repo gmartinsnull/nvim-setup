@@ -1,0 +1,6 @@
+vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gl", ":G log<CR>")
+vim.keymap.set("n", "<leader>gc", ":G commit<CR>")
+vim.keymap.set("n", "<leader>gps", ":G push<CR>")
+vim.keymap.set("n", "<leader>gp", ":G pull<CR>")
+vim.keymap.set("n", "<leader>ga", ":G add .<CR>")
