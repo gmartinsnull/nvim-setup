@@ -22,8 +22,8 @@ require("lualine").setup {
                 "buffers",
                 buffers_color = {
                     -- Same values as the general color option can be used here.
-                    active = { fg = "#2a2a2a", bg = "#ffa500" }, -- Color for active buffer
-                    inactive = { fg = "#ffa500", bg = "#0000000" },
+                    active = { fg = "#ffffff", bg = "#df8e1d" }, -- Color for active buffer
+                    inactive = { fg = "#df8e1d", bg = "#0000000" },
                 },
                 symbols = {
                     modified = ' ●', -- Text to show when the buffer is modified
