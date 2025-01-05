@@ -71,13 +71,14 @@ return {
     },
 
     -- colour scheme
-    {
-        "rose-pine/neovim",
-        name = "rose-pine",
-        config = function()
-            vim.cmd("colorscheme rose-pine")
-        end
-    },
+    -- {
+    --     "rose-pine/neovim",
+    --     name = "rose-pine",
+    --     config = function()
+    --         vim.cmd("colorscheme rose-pine")
+    --     end
+    -- },
+    { "catppuccin/nvim",                 name = "catppuccin", priority = 1000 },
 
     -- treesitter
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
@@ -99,6 +100,23 @@ return {
             "MunifTanjim/nui.nvim",
             -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
         }
+    },
+
+    -- revamped messages(toast on top right), cmdline and popupmenu
+    {
+        "folke/noice.nvim",
+        event = "VeryLazy",
+        opts = {
+            -- add any options here
+        },
+        dependencies = {
+            -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+            "MunifTanjim/nui.nvim",
+            -- OPTIONAL:
+            --   `nvim-notify` is only needed, if you want to use the notification view.
+            --   If not available, we use `mini` as the fallback
+            { "rcarriga/nvim-notify" },
+        },
     },
 
     -- lsp
@@ -209,7 +227,14 @@ return {
     },
 
     -- Highlight todo, notes, etc in comments
-    { 'folke/todo-comments.nvim', event = 'VimEnter', dependencies = { 'nvim-lua/plenary.nvim' }, opts = { signs = false } },
+    {
+        'folke/todo-comments.nvim',
+        event = 'VimEnter',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+        opts = {
+            signs = true
+        },
+    },
 
     { -- Collection of various small independent plugins/modules
         'echasnovski/mini.nvim',
@@ -232,20 +257,28 @@ return {
             -- Simple and easy statusline.
             --  You could remove this setup call if you don't like it,
             --  and try some other statusline plugin
-            local statusline = require 'mini.statusline'
+            -- local statusline = require 'mini.statusline'
             -- set use_icons to true if you have a Nerd Font
-            statusline.setup { use_icons = vim.g.have_nerd_font }
+            -- statusline.setup { use_icons = vim.g.have_nerd_font }
 
             -- You can configure sections in the statusline by overriding their
             -- default behavior. For example, here we set the section for
             -- cursor location to LINE:COLUMN
             ---@diagnostic disable-next-line: duplicate-set-field
-            statusline.section_location = function()
-                return '%2l:%-2v'
-            end
+            -- statusline.section_location = function()
+            --    return '%2l:%-2v'
+            -- end
 
             -- ... and there is more!
             --  Check out: https://github.com/echasnovski/mini.nvim
         end,
     },
+
+    -- status line
+    {
+        "nvim-lualine/lualine.nvim",
+        dependencies = {
+            "nvim-tree/nvim-web-devicons",
+        }
+    }
 }
