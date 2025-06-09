@@ -160,6 +160,14 @@ return {
             require("config.completions")
         end,
     },
+    -- rust tools
+    {
+        'simrat39/rust-tools.nvim',
+        dependencies = { 'neovim/nvim-lspconfig' },
+        config = function()
+            require("config.rust-tools")
+        end,
+    },
     -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -285,5 +293,31 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         }
+    },
+
+    -- jupyter notebook experience
+    -- jupytext
+    {
+        "GCBallesteros/jupytext.nvim",
+        config = true,
+        -- Depending on your nvim distro or config you may need to make the loading not lazy
+        -- lazy=false,
+    },
+    -- github copilot
+    {
+        "zbirenbaum/copilot.lua",
+        cmd = "Copilot",
+        event = "InsertEnter",
+        config = function()
+            require("config.copilot")
+        end,
+    },
+    -- github copilot suggestions
+    {
+        "zbirenbaum/copilot-cmp",
+        dependencies = { "zbirenbaum/copilot.lua" },
+        config = function()
+            require("copilot_cmp").setup()
+        end,
     }
 }

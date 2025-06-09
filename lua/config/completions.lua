@@ -42,9 +42,10 @@ cmp.setup({
     sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "luasnip" }, -- For luasnip users.
+        { name = "copilot" },
     }, {
-            { name = "buffer" },
-        })
+        { name = "buffer" },
+    })
 })
 
 -- The nvim-cmp almost supports LSP's capabilities so You should advertise it to LSP servers..
@@ -52,9 +53,18 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- An example for configuring `clangd` LSP to use nvim-cmp as a completion engine
 local lspconfig = require("lspconfig")
-lspconfig.lua_ls.setup ({
+lspconfig.lua_ls.setup({
     capabilities = capabilities,
 })
 lspconfig.pyright.setup({
     capabilities = capabilities,
+})
+lspconfig.rust_analyzer.setup({
+    capabilities = capabilities,
+    settings = {
+        ['rust-analyzer'] = {
+            cargo = { allFeatures = true },
+            checkOnSave = { command = "clippy" }
+        }
+    }
 })
