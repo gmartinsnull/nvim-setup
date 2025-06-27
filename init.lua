@@ -1,5 +1,6 @@
 vim.hl = vim.highlight
 
+vim.opt.smartindent = true
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 4

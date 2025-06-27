@@ -168,6 +168,15 @@ return {
             require("config.rust-tools")
         end,
     },
+    -- official rust plugin
+    {
+        "rust-lang/rust.vim",
+        ft = "rust",
+        config = function()
+            -- optional: enables rustfmt on save if desired
+            vim.g.rustfmt_autosave = 0
+        end
+    },
     -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
     'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
 
@@ -309,15 +318,22 @@ return {
         cmd = "Copilot",
         event = "InsertEnter",
         config = function()
-            require("config.copilot")
+            require("copilot").setup({
+                suggestion = {
+                    enabled = true,
+                    auto_trigger = true,
+                    debounce = 75,
+                    keymap = {
+                        accept = "<Tab>",
+                        accept_word = false,
+                        accept_line = false,
+                        next = "<M-]>",
+                        prev = "<M-[>",
+                        dismiss = "<C-]>",
+                    },
+                },
+                panel = { enabled = false },
+            })
         end,
     },
-    -- github copilot suggestions
-    {
-        "zbirenbaum/copilot-cmp",
-        dependencies = { "zbirenbaum/copilot.lua" },
-        config = function()
-            require("copilot_cmp").setup()
-        end,
-    }
 }
