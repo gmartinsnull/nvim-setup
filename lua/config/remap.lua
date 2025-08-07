@@ -35,3 +35,8 @@ vim.keymap.set("v", "<leader>y", "\"*y")
 vim.keymap.set("n", "<leader>bp", "<cmd>b#<CR>")
 vim.keymap.set("n", "<leader>bn", "<cmd>bn<CR>")
 vim.keymap.set("n", "<leader>bd", "<cmd>bd<CR>")
+
+-- copilot keymap to dismiss suggestions
+vim.keymap.set('i', '<C-l>', function()
+    vim.fn["copilot#Dismiss"]()
+end, { desc = 'Dismiss Copilot suggestions' })

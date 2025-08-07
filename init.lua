@@ -75,4 +75,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- copilot setup
+vim.g.copilot_no_tab_map = true
+vim.g.copilot_assume_mapped = true
+vim.g.copilot_tab_fallback = ''
+
 require("config")
