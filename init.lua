@@ -75,6 +75,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- enable inline code diagnostics (shows errors and warnings)
+vim.diagnostic.config({
+  virtual_text = {
+    prefix = '●', -- Could be '■', '▎', 'x'
+    spacing = 2,
+  },
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true, -- show more severe diagnostics first
+})
+
 -- copilot setup
 vim.g.copilot_no_tab_map = true
 vim.g.copilot_assume_mapped = true
